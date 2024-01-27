@@ -67,9 +67,9 @@ class ApartmentRaterTest {
 
     @ParameterizedTest
     @CsvSource({"1000, 9000000.0", "2000, 17000000.0", "3000, 25000000.0"})
-    void should_ReturnTwoRating_When_CorrectApartment() {
+    void should_ReturnTwoRating_When_CorrectApartment(Double area, Double price) {
         // given
-        Apartment apartment = new Apartment(1000, new BigDecimal(9000000.0));
+        Apartment apartment = new Apartment(area, new BigDecimal(price));
 
         // when
         int rating = ApartmentRater.rateApartment(apartment);
