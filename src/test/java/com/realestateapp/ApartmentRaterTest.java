@@ -64,4 +64,17 @@ class ApartmentRaterTest {
         // then
         assertThrows(RuntimeException.class, executable);
     }
+
+    @ParameterizedTest
+    @CsvSource({"1000, 9000000.0", "2000, 17000000.0", "3000, 25000000.0"})
+    void should_ReturnTwoRating_When_CorrectApartment() {
+        // given
+        Apartment apartment = new Apartment(1000, new BigDecimal(9000000.0));
+
+        // when
+        int rating = ApartmentRater.rateApartment(apartment);
+
+        // then
+        assertEquals(2, rating);
+    }
 }
